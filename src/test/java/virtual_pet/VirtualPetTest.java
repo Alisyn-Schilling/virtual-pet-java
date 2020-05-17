@@ -2,7 +2,7 @@ package virtual_pet;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class VirtualPetTest {
 
@@ -100,6 +100,42 @@ public class VirtualPetTest {
         assertEquals(21, pet1.getHunger());
         assertEquals(24, pet1.getThirst());
         assertEquals(21, pet1.getEnergy());
+    }
+
+    @Test
+    public void happyPet() {
+        VirtualPet pet1 = new VirtualPet("Taz", 20, 21, 22, 23, 24);
+        assertFalse(VirtualPetApplication.getMischief(pet1));
+    }
+
+    @Test
+    public void hungryPet() {
+        VirtualPet pet1 = new VirtualPet("Taz", 50, 21, 22, 23, 24);
+        assertTrue(VirtualPetApplication.getMischief(pet1));
+    }
+
+    @Test
+    void thirstyPet() {
+        VirtualPet pet1 = new VirtualPet("Taz", 20, 50, 22, 23, 24);
+        assertTrue(VirtualPetApplication.getMischief(pet1));
+    }
+
+    @Test
+    void boredPet() {
+        VirtualPet pet1 = new VirtualPet("Taz", 20, 21, 50, 23, 24);
+        assertTrue(VirtualPetApplication.getMischief(pet1));
+    }
+
+    @Test
+    void lonelyPet() {
+        VirtualPet pet1 = new VirtualPet("Taz", 20, 21, 22, 50, 24);
+        assertTrue(VirtualPetApplication.getMischief(pet1));
+    }
+
+    @Test
+    void nappingPet() {
+        VirtualPet pet1 = new VirtualPet("Taz", 20, 21, 22, 23, 0);
+        assertTrue(VirtualPetApplication.getMischief(pet1));
     }
 
 }

@@ -42,36 +42,88 @@ public class VirtualPet {
     }
 
     public void feed(int food) {
-        hunger -= food;
+        if ((hunger - food) > 0) {
+            hunger -= food;
+        } else {
+            hunger = 0;
+        }
     }
 
     public void water(int water) {
-        thirst -= water;
+        if ((thirst - water) > 0) {
+            thirst -= water;
+        } else {
+            thirst = 0;
+        }
     }
 
     public void play(int play) {
-        boredom -= play;
+        if ((boredom - play) > 0) {
+            boredom -= play;
+        } else {
+            boredom = 0;
+        }
     }
 
     public void love(int love) {
-        loneliness -= love;
+        if ((loneliness - love) > 0) {
+            loneliness -= love;
+        } else {
+            loneliness = 0;
+        }
     }
 
     public void sleep(int sleep) {
-        energy += sleep;
+        if ((energy + sleep) < 50) {
+            energy += sleep;
+        } else {
+            energy = 50;
+        }
     }
 
     public void tick() {
-        hunger += 2;
-        thirst += 3;
-        boredom += 5;
-        loneliness += 4;
-        energy -= 2;
+        if ((hunger + 2) < 50) {
+            hunger += 2;
+        } else {
+            hunger = 50;
+        }
+        if ((thirst + 3) < 50) {
+            thirst += 3;
+        } else {
+            thirst = 50;
+        }
+        if ((boredom + 5) < 50) {
+            boredom += 5;
+        } else {
+            boredom = 50;
+        }
+        if ((loneliness + 4) < 50) {
+            loneliness += 4;
+        } else {
+            loneliness = 50;
+        }
+        if ((energy - 2) > 0) {
+            energy -= 2;
+        } else {
+            energy = 0;
+        }
     }
 
     public void tired() {
-        hunger += 1;
-        thirst += 3;
-        energy -= 3;
+        if ((hunger + 1) < 50) {
+            hunger += 1;
+        } else {
+            hunger = 50;
+        }
+        if ((thirst + 3) < 50) {
+            thirst += 3;
+        } else {
+            thirst = 50;
+        }
+        if ((energy - 3) > 0) {
+            energy -= 3;
+        } else {
+            energy = 0;
+        }
     }
 }
